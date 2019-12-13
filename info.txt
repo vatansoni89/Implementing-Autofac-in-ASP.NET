@@ -1,0 +1,15 @@
+Autofaq:
+  Register Dependency:
+    - Add autofaq nuget package to main project so we can register all dependency.
+	- Create Container and add dependency to it.
+	    For abstract type:
+		  var cb = new ContainerBuilder();
+          cb.RegisterType<AvengerRepository>().As<IAvengerRepository>();
+		For Concrete type:
+		  cb.RegisterType<SuperheroService>();
+		Build Container:
+		  IContainer container = cb.Build();
+	- Resolve dependency:
+	    Constructor injection resolves autometically as dependency already known to container.
+		Concrete dependency resolved like:
+		  SuperheroService superheroService = container.Resolve<SuperheroService>();
